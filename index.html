@@ -3,12 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Camera Fly-through using Theatre.js | Codrops</title>
+    <title>Homepage - Airsmart</title>
     <meta name="description" content="Demo for the tutorial on how to create a camera fly-through effect with Theatre.js" />
     <meta name="keywords" content="theatre.js, fly-through, 3d, react three fiber" />
     <meta name="author" content="Andrew Prifer for Codrops" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="airsmart.png" />
     <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <style>
+      /* Hide scrollbar but keep scroll functionality */
+      html {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+      
+      html::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      
+      body {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+      
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      
+      /* Hide scrollbar for all elements */
+      * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+      
+      *::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+
+      .welcome-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        z-index: 1000;
+        background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: fadeInScale 1.5s ease-out, float 3s ease-in-out infinite;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .welcome-message:hover {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+        pointer-events: none;
+      }
+
+      @keyframes fadeInScale {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translate(-50%, -50%) translateY(0px);
+        }
+        50% {
+          transform: translate(-50%, -50%) translateY(-10px);
+        }
+      }
+
+      .welcome-message::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+        border-radius: 17px;
+        z-index: -1;
+        animation: borderGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
     <script>
       document.documentElement.className = "js";
       var supportsCssVars = function () {
@@ -34,7 +132,12 @@
   </head>
   <body class="demo-1">
     <main>
-      <div class="frame">
+      <!-- Welcome Message -->
+      <div class="welcome-message">
+        Welcome to Airsmart
+      </div>
+      
+      <!-- <div class="frame">
         <div class="frame__title">
           <h1 class="frame__title-main">Camera Flythrough using Theatre.js</h1>
           <a
@@ -52,7 +155,7 @@
           </a>
         </div>
         <a class="frame__prev" href="https://tympanus.net/Development/TypeShuffleAnimation/">Previous demo</a>
-      </div>
+      </div> -->
       <div id="root"></div>
     </main>
     <script type="module" src="/src/main.jsx"></script>

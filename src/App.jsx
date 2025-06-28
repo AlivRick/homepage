@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Gltf, ScrollControls, useScroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
-import theatreState from "./Fly Through.theatre-project-state2.json";
+import theatreState from "./FlyThrough.theatre-project-state2.json";
 import studio from "@theatre/studio";
 import {
   SheetProvider,
@@ -13,9 +13,9 @@ export default function App() {
   const sheet = getProject("Fly Through", { state: theatreState }).sheet(
     "Scene"
   );
-  if (import.meta.env.DEV) {
-    studio.initialize();
-  }
+  // if (import.meta.env.DEV) {
+  //   studio.initialize();
+  // }
   return (
     <Canvas gl={{ preserveDrawingBuffer: true }}>
       <ScrollControls pages={5}>
@@ -47,7 +47,7 @@ function Scene() {
       <fog attach="fog" color={bgColor} near={0} far={20} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      <Gltf src="/House Combined2.glb" castShadow receiveShadow />
+      <Gltf src="/HouseCombined2.glb" castShadow receiveShadow />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
